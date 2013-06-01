@@ -1,4 +1,14 @@
 Iotmarketplace::Application.routes.draw do
+ get "users/show"
+
+  resources :projects
+
+  devise_for :users
+  match 'users/:id' => 'users#show', as: :user
+
+  get 'about' => 'pages#about'
+
+  root :to => 'projects#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
